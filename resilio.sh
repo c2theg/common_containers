@@ -11,7 +11,7 @@
 
 #------ Setup ----------
 INSTALL_DIR=/etc/resilio/
-DATA_DIR=/media/data/sync
+DATA_DIR=/media/data/sync/
 WEBUI_PORT=8888
 
 mkdir -p $INSTALL_DIR
