@@ -6,16 +6,20 @@
 # https://hub.docker.com/r/resilio/sync
 #
 #------ Install --------
-docker pull resilio/sync:latest
+# Run this the first time
+# docker pull resilio/sync:latest
 
 #------ Setup ----------
-DATA_FOLDER=/media/data/sync/
+INSTALL_DIR=/etc/resilio/
+DATA_DIR=/media/data/sync
 WEBUI_PORT=8888
 
-mkdir -p $DATA_FOLDER
+mkdir -p $INSTALL_DIR
+mkdir -p $DATA_DIR
 
 docker run -d --name Sync \
-           -p 127.0.0.1:$WEBUI_PORT:8888 \
-           -v $DATA_FOLDER:/mnt/sync \
+           -p 0.0.0.0:$WEBUI_PORT:8888 \
+           -v $INSTALL_DIR:/mnt/sync \
+           -v $DATA_DIR:$DATA_DIR \
            --restart on-failure \
            resilio/sync
